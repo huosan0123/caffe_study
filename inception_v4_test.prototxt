@@ -9,10 +9,10 @@ layer {
   transform_param {
     mirror: true
     crop_size: 299
-    mean_file: "/mnt/storage01/kkzhang/cover_0430/data/mean.binaryproto"
+    mean_file: "path/mean.binaryproto"
   }
   data_param {
-    source: "/mnt/storage01/kkzhang/cover_0430/data/val1_lmdb"
+    source: "path/val1_lmdb"
     batch_size: 24
     backend: LMDB
   }
