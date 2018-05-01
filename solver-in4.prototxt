@@ -1,0 +1,21 @@
+## A example of train and test using two prototxt. 
+## Differences of two protos are：use_global_stats、data、accuracy
+## main file is from https://github.com/GeekLiB/caffe-model/blob/master/prototxts/inception_resnet_v2_train_test.prototxt
+train_net: "inception_v4_train_test.prototxt"
+test_net: "inception-test.prototxt"
+
+test_iter: 100
+test_interval: 4000
+display: 100
+
+base_lr: 0.0001
+lr_policy: "step"
+stepsize: 20000
+gamma: 0.9
+momentum: 0.9
+weight_decay: 0.0005
+
+max_iter: 475000
+snapshot: 2000
+snapshot_prefix: "./models/incept4"
+solver_mode: GPU
