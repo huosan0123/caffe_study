@@ -9,3 +9,5 @@ A implementation of resnet50.
 
 #### test_net.py
 After deploying the model, we need to do prediction for a image, so here is a tool for that. See notes and details in it.
+
+mean_2_npy.py helps to convert mean.binaryproto to numpy array
