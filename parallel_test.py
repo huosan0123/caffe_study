@@ -34,7 +34,7 @@ transformer.set_raw_scale('data', 255)
 transformer.set_channel_swap('data', (2, 1, 0))
 images, labels, images_path = get_jpg_label(test_file, test_path)
 
-def fuck_image(image_path):
+def read_image(image_path):
     img = caffe.io.load_image(image_path)
     img = transformer.preprocess('data', img)
     return img
@@ -47,7 +47,7 @@ pre_time = time.time()
 
 for index, image_path in enumerate(images_path):
     try:
-        image_async_list[i] = pool.apply_async(fuck_image, (image_path,))
+        image_async_list[i] = pool.apply_async(read_image, (image_path,))
         batch_labels.append(labels[index])
         batch_names.append(images[index])
     except:
@@ -75,7 +75,7 @@ for index, image_path in enumerate(images_path):
         gap = (time.time() - pre_time) / 60
         print("TIME= {} min, Have processed {} images".format(gap, index+1))
         sys.stdout.flush()
-        break
+pool.close()
 
 auc = metrics.roc_auc_score(true_labels, pred_logits)
 print('the AUC is {}'.format(auc))
