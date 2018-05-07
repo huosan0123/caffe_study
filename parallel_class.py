@@ -80,6 +80,7 @@ class Parallel_test(object):
                 sys.stdout.flush()
             if (index+1) == 10240:
                 break
+        pool.close()
 
     # metrics.roc_auc_score need a list of y_true and  a list of logits_pred
     def measure(self):
